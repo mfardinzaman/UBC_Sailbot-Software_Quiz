@@ -1,10 +1,11 @@
 def refAngle(angle):
     '''
-    Bounds the provided angle in degrees between
-    :param angle:
-    :return:
+    Finds the reference angle [0, 359] for a given angle
+    :param angle: float
+    :return: float
     '''
     return (360 + angle % 360) % 360
+
 
 class AngleCalc:
 

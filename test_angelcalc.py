@@ -1,5 +1,5 @@
 import unittest
-from AngleCalc import *
+from anglecalc import *
 
 class TestAngleCalc(unittest.TestCase):
 
@@ -26,20 +26,23 @@ class TestAngleCalc(unittest.TestCase):
         result3 = AngleCalc.boundTo180(self, 180)
         self.assertEqual(result3, -180) # exception (when angle is 180)
 
-        result4 = AngleCalc.boundTo180(self, 225)
-        self.assertEqual(result4, -135) # positive to negative; reference angle >180
+        result4 = AngleCalc.boundTo180(self, -180)
+        self.assertEqual(result4, -180) # exception (when angle is -180)
 
-        result5 = AngleCalc.boundTo180(self, -90)
-        self.assertEqual(result5, -90)  # no change, negative
+        result5 = AngleCalc.boundTo180(self, 225)
+        self.assertEqual(result5, -135) # positive to negative; reference angle >180
 
-        result6 = AngleCalc.boundTo180(self, -315)
-        self.assertEqual(result6, 45)   # negative to positive; reference angle <180
+        result6 = AngleCalc.boundTo180(self, -90)
+        self.assertEqual(result6, -90)  # no change, negative
 
-        result7 = AngleCalc.boundTo180(self, 765)
-        self.assertEqual(result7, 45)   # find reference angle; no change in sign
+        result7 = AngleCalc.boundTo180(self, -315)
+        self.assertEqual(result7, 45)   # negative to positive; reference angle <180
 
-        result8 = AngleCalc.boundTo180(self, 630)
-        self.assertEqual(result8, -90)  # find reference angle; change in sign
+        result8 = AngleCalc.boundTo180(self, 765)
+        self.assertEqual(result8, 45)   # find reference angle; no change in sign
+
+        result9 = AngleCalc.boundTo180(self, 630)
+        self.assertEqual(result9, -90)  # find reference angle; change in sign
 
     def test_isAngleBetween(self):
         self.assertTrue(AngleCalc.isAngleBetween(self, 0, 45, 90))     # True; all angles <180
