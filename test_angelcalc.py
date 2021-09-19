@@ -49,6 +49,14 @@ class TestAngleCalc(unittest.TestCase):
         self.assertEqual(result9, -90)  # find reference angle; change in sign
 
     def test_isAngleBetween(self):
+        self.assertTrue(AngleCalc.isAngleBetween(-90, 180, 110)) # given example1
+
+        self.assertTrue(AngleCalc.isAngleBetween(110, 180, -90))  # given example1, flipped input
+
+        self.assertFalse(AngleCalc.isAngleBetween(-90, 180, 80)) # given example2
+
+        self.assertFalse(AngleCalc.isAngleBetween(80, 180, -90)) # given example2, flipped input
+
         self.assertTrue(AngleCalc.isAngleBetween(0, 45, 90))     # True; all angles <180
 
         self.assertTrue(AngleCalc.isAngleBetween(90, 179, -135)) # True; edge case and negative angle
@@ -58,6 +66,7 @@ class TestAngleCalc(unittest.TestCase):
         self.assertFalse(AngleCalc.isAngleBetween(0, 45, 20))    # False; no angle conversion
 
         self.assertFalse(AngleCalc.isAngleBetween(180, 270, 90)) # False; w/ angle conversion
+
 
 if __name__ == '__main__':
     unittest.main()
